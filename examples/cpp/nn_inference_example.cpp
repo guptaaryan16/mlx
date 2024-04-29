@@ -88,13 +88,13 @@ class Module {
   }
 
   template <typename T>
-  Module register_module(const std::string_view sub_name, T&& m) {
+  Module register_module(std::string_view sub_name, T&& m) {
     // `register_component` allows you to register the component(in order) as
     // used by the NN
     if (!std::is_base_of<T, Module>::value) {
       // Error the code is not correct
     }
-    std::string temp = std::string(name);
+    std::string temp = std::string(sub_name);
     submodules.insert({temp, m});
     return submodules.at(temp);
   }

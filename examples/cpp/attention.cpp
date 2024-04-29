@@ -60,7 +60,7 @@ class LayerNorm : public Module {
     array means = mean(x, -1, true);
     array _var = var(x, -1, true);
     array _x = (x - means) * rsqrt(_var + eps);
-    return affine ? (parameters["bias"] * _x + parameters["weights"]) : _x;
+    return affine ? (parameters.at("bias") * _x + parameters.at("weight")) : _x;
   }
 };
 
